@@ -2,7 +2,8 @@
 
 Simple web-application based on Python (version3) with Flask Microframework. Used for studies with the framework. It simplementes the list of restaurants.
 
-![screenshot](http://downloads.chrisullyott.com/courses/udacity/full-stack/finalproject-demo.jpg)
+![screenshot](https://raw.github.com/edersoncorbari/flask-restaurant/master/screenshot.png)
+
 
 ## Dependencies
 
