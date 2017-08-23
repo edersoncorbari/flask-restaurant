@@ -1,0 +1,32 @@
+{% if item %}
+
+<hr>
+
+<h2>{{item.name}}</h2>
+
+  <form action="#" method="post">
+
+    <label>Name:</label>
+    <input type="text" name="name" value="{{item.name}}">
+
+    <label>Description:</label>
+    <input type="text" name="description" value="{{item.description}}">
+
+    <label>Course:</label>
+    <input type="text" name="course" value="{{item.course}}">
+
+    <label>Price:</label>
+    <input type="text" name="price" value="{{item.price}}">
+
+    <ul class="button-list">
+      <li><input type="submit" value="Save"></li>
+      <li><a href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">Cancel</a></li>
+    </ul>
+
+  </form>
+
+{% else %}
+
+  <p>No item.</p>
+
+{% endif %}

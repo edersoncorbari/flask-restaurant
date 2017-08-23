@@ -1,0 +1,17 @@
+{% if restaurant %}
+
+<hr>
+
+<h2>{{restaurant.name}}</h2>
+
+  <form action="#" method="post">
+
+    <label>Name:</label>
+    <input type="text" name="name" value="{{restaurant.name}}">
+
+    <input type="submit" value="Save">
+    <a href="{{url_for('showRestaurants')}}">Cancel</a>
+
+  </form>
+
+{% endif %}

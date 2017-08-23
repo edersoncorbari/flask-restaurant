@@ -1,0 +1,9 @@
+<form method="post" action="{{url_for('newRestaurant')}}">
+
+  <label>Name:</label>
+  <input type="text" name="name" placeholder="Name">
+
+  <input type="submit" value="Create">
+  <a href="{{url_for('showRestaurants')}}">Cancel</a>
+
+</form>

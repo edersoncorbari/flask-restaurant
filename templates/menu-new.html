@@ -1,0 +1,27 @@
+{% if restaurant %}
+
+<hr>
+
+  <h2>{{restaurant.name}}</h2>
+
+  <form action="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}" method="post">
+
+    <p>Name:</p>
+    <input type="text" name="name" placeholder="Name">
+
+    <p>Description:</p>
+    <input type="text" name="description" placeholder="Description">
+
+    <p>Course:</p>
+    <input type="text" name="course" placeholder="Course">
+
+    <p>Price:</p>
+    <input type="text" name="price" placeholder="Price">
+
+    <input type="submit" value="Save">
+
+    <a href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">Cancel</a>
+
+  </form>
+
+{% endif %}

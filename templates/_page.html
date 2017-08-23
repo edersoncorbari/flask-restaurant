@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+  {% include '_head.html' %}
+{% endblock %}
+</head>
+
+<body>
+
+  <div class="container" id="header">
+    <div class="column one-half">
+    {% if title %}
+      <h1>{{title}}</h1>
+    {% endif %}
+    </div>
+    <div class="one-half column right">
+    {% block listActions %}
+      <ul class="button-list">
+      {% if view == 'showRestaurants' %}
+          <li>
+            <a class="button" href="{{url_for('newRestaurant')}}">
+              <span class="icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+<path fill="#000000" d="M15.5 6h-5.5v-5.5c0-0.276-0.224-0.5-0.5-0.5h-3c-0.276 0-0.5 0.224-0.5 0.5v5.5h-5.5c-0.276 0-0.5 0.224-0.5 0.5v3c0 0.276 0.224 0.5 0.5 0.5h5.5v5.5c0 0.276 0.224 0.5 0.5 0.5h3c0.276 0 0.5-0.224 0.5-0.5v-5.5h5.5c0.276 0 0.5-0.224 0.5-0.5v-3c0-0.276-0.224-0.5-0.5-0.5z"></path>
+</svg>
+              </span>
+              New Menu
+            </a>
+          </li>
+      {% endif %}
+      {% if view == 'showMenu' %}
+          <li>
+            <a class="button" href="{{url_for('showRestaurants')}}">&larr; Go Back</a>
+          </li>
+          <li>
+            <a class="button" href="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}">
+              <span class="icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+<path fill="#000000" d="M15.5 6h-5.5v-5.5c0-0.276-0.224-0.5-0.5-0.5h-3c-0.276 0-0.5 0.224-0.5 0.5v5.5h-5.5c-0.276 0-0.5 0.224-0.5 0.5v3c0 0.276 0.224 0.5 0.5 0.5h5.5v5.5c0 0.276 0.224 0.5 0.5 0.5h3c0.276 0 0.5-0.224 0.5-0.5v-5.5h5.5c0.276 0 0.5-0.224 0.5-0.5v-3c0-0.276-0.224-0.5-0.5-0.5z"></path>
+</svg>
+              </span>
+              New Item
+            </a>
+          </li>
+      {% endif %}
+      {% if 'username' not in login_session %}
+      <!-- LOGIN  -->
+      <li>
+        <a class="button" href="{{url_for('showLogin')}}">Login</a>
+      </li>
+      {% else %}
+      <!-- LOGOUT (username: {{login_session.username}})  -->
+      <li>
+        <a class="button" href="{{url_for('disconnect')}}">Logout</a>
+      </li>
+      {% endif %}
+      </ul><!-- .button-list -->
+    {% endblock %}
+    </div>
+  </div>
+
+  <div class="container" id="content">
+  {% block content %}
+
+    {% if view == 'login' %}
+        {% include '_messages.html' %}
+        {% include 'login.html' %}
+    {% endif %}
+
+    {% if view == 'showRestaurants' %}
+        {% include '_messages.html' %}
+        {% include 'restaurant-list.html' %}
+    {% endif %}
+
+    {% if view == 'newRestaurant' %}
+        {% include 'restaurant-new.html' %}
+    {% endif %}
+
+    {% if view == 'editRestaurant' %}
+        {% include 'restaurant-edit.html' %}
+    {% endif %}
+
+    {% if view == 'deleteRestaurant' %}
+        {% include 'restaurant-delete.html' %}
+    {% endif %}
+
+    {% if view == 'showMenu' %}
+        {% include '_messages.html' %}
+        {% include 'menu-list.html' %}
+    {% endif %}
+
+    {% if view == 'newMenuItem' %}
+        {% include 'menu-new.html' %}
+    {% endif %}
+
+    {% if view == 'editMenuItem' %}
+        {% include 'menu-edit.html' %}
+    {% endif %}
+
+    {% if view == 'deleteMenuItem' %}
+        {% include 'menu-delete.html' %}
+    {% endif %}
+
+  {% endblock %}
+  </div>
+
+  <div class="container" id="footer">
+    <hr>
+    <div>
+      <div class="column one-half">
+        <p>flask-restaurant</p>
+      </div>
+      <div class="column one-half right">
+        <p>23-07-2017</p>
+      </div>
+    </div>
+  </div>
+
+{% block scripts %}
+  {% include '_scripts.html' %}
+{% endblock %}
+
+</body>
+</html>

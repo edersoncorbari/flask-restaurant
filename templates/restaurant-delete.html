@@ -1,0 +1,14 @@
+<hr>
+
+{% if restaurant %}
+
+  <form action="#" method="post">
+
+    <p>Really delete <strong>{{restaurant.name}}</strong>?</p>
+
+    <input type="submit" value="Delete">
+    <a href="{{url_for('showRestaurants')}}">Cancel</a>
+
+  </form>
+
+{% endif %}
